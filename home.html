@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GYMCONTROL - Panel principal</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="app-page">
+
+<header class="topbar">
+    <h2>💪 GYMCONTROL</h2>
+    <div>
+        <span id="currentUser">Usuario</span>
+        <button id="logoutBtn">Cerrar sesión</button>
+    </div>
+</header>
+
+<div class="app-layout">
+
+    <aside class="sidebar">
+        <h3>MENÚ PRINCIPAL</h3>
+
+        <button class="nav-link active" data-view="dashboard">🏠 Panel principal</button>
+        <button class="nav-link" data-view="users">👥 Usuarios</button>
+        <button class="nav-link" data-view="routines">🏋️ Programa tu rutina</button>
+        <button class="nav-link" data-view="history">📋 Historial de rutinas</button>
+        <button class="nav-link" data-view="memberships">📅 Mensualidades</button>
+        <button class="nav-link" data-view="payments">💰 Historial de pagos</button>
+        <button class="nav-link" data-view="contests">🏆 Concursos</button>
+        <button class="nav-link" data-view="settings">⚙️ Ajustes</button>
+    </aside>
+
+    <main class="main-content">
+
+        <div id="notice" class="notice"></div>
+
+        <!-- PANEL PRINCIPAL -->
+        <section id="view-dashboard" class="view active">
+
+            <h1 id="welcomeTitle">Bienvenido a GYMCONTROL</h1>
+            <p>Administra tu gimnasio desde un solo lugar.</p>
+
+            <div class="stats-grid">
+
+                <div class="stat-card">
+                    <h3>Usuarios</h3>
+                    <strong id="statUsers">0</strong>
+                </div>
+
+                <div class="stat-card">
+                    <h3>Mensualidades activas</h3>
+                    <strong id="statMemberships">0</strong>
+                </div>
+
+                <div class="stat-card">
+                    <h3>Pagos registrados</h3>
+                    <strong id="statPayments">0</strong>
+                </div>
+
+                <div class="stat-card">
+                    <h3>Rutinas creadas</h3>
+                    <strong id="statRoutines">0</strong>
+                </div>
+
+            </div>
+
+            <div class="panel">
+                <h2>Bienvenido a tu administrador de gimnasio</h2>
+                <p>Selecciona una opción del menú para comenzar.</p>
+            </div>
+
+        </section>
+
+        <!-- USUARIOS -->
+        <section id="view-users" class="view">
+
+            <h1>Gestión de usuarios</h1>
+            <p>Registra y administra los clientes del gimnasio.</p>
+
+            <button class="btn btn-primary" id="addUserBtn">
+                + Registrar usuario
+            </button>
+
+            <br><br>
+
+            <input id="userSearch" type="search" placeholder="Buscar usuario...">
+
+            <div class="panel table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Documento</th>
+                            <th>Teléfono</th>
+                            <th>Correo</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="usersTable"></tbody>
+                </table>
+
+                <p id="usersEmpty">Todavía no hay usuarios registrados.</p>
+            </div>
+
+        </section>
+
+        <!-- CREAR RUTINAS -->
+        <section id="view-routines" class="view">
+
+            <h1>Programa tu rutina</h1>
+
+            <div class="panel">
+
+                <form id="routineForm">
+
+                    <label>Cliente</label>
+                    <select id="routineUser" required></select>
+
+                    <label>Nombre de la rutina</label>
+                    <input id="routineName" required placeholder="Ej. Rutina de fuerza">
+
+                    <label>Objetivo</label>
+                    <select id="routineGoal">
+                        <option>Fuerza</option>
+                        <option>Hipertrofia</option>
+                        <option>Resistencia</option>
+                        <option>Acondicionamiento físico</option>
+                        <option>Pérdida de grasa</option>
+                    </select>
+
+                    <label>Días por semana</label>
+                    <input id="routineDays" type="number" min="1" max="7" value="3" required>
+
+                    <label>Descripción y ejercicios</label>
+                    <textarea id="routineDescription" rows="5" required></textarea>
+
+                    <button class="btn btn-primary" type="submit">
+                        Guardar rutina
+                    </button>
+
+                </form>
+
+            </div>
+
+        </section>
+
+        <!-- HISTORIAL DE RUTINAS -->
+        <section id="view-history" class="view">
+
+            <h1>Historial de rutinas</h1>
+
+            <input id="routineSearch" type="search" placeholder="Buscar rutina o cliente...">
+
+            <div class="panel">
+                <div id="routinesList"></div>
+                <p id="routinesEmpty">Todavía no hay rutinas registradas.</p>
+            </div>
+
+        </section>
+
+        <!-- MENSUALIDADES -->
+        <section id="view-memberships" class="view">
+
+            <h1>Gestión de mensualidades</h1>
+
+            <div class="panel">
+
+                <h3>Registrar mensualidad</h3>
+
+                <form id="membershipForm">
+
+                    <label>Cliente</label>
+                    <select id="membershipUser" required></select>
+
+                    <label>Valor de la mensualidad</label>
+                    <input id="membershipAmount" type="number" min="1" required>
+
+                    <label>Fecha de inicio</label>
+                    <input id="membershipStart" type="date" required>
+
+                    <label>Fecha de vencimiento</label>
+                    <input id="membershipEnd" type="date" required>
+
+                    <button class="btn btn-primary" type="submit">
+                        Guardar mensualidad
+                    </button>
+
+                </form>
+
+            </div>
+
+            <div class="panel table-wrap">
+
+                <h3>Mensualidades registradas</h3>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Cliente</th>
+                            <th>Valor</th>
+                            <th>Inicio</th>
+                            <th>Vencimiento</th>
+                            <th>Estado</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="membershipsTable"></tbody>
+                </table>
+
+                <p id="membershipsEmpty">No hay mensualidades registradas.</p>
+
+            </div>
+
+        </section>
+
+        <!-- PAGOS -->
+        <section id="view-payments" class="view">
+
+            <h1>Historial de pagos</h1>
+
+            <div class="panel">
+
+                <h3>Registrar pago</h3>
+
+                <form id="paymentForm">
+
+                    <label>Cliente</label>
+                    <select id="paymentUser" required></select>
+
+                    <label>Concepto</label>
+                    <input id="paymentConcept" value="Mensualidad" required>
+
+                    <label>Valor pagado</label>
+                    <input id="paymentAmount" type="number" min="1" required>
+
+                    <label>Fecha de pago</label>
+                    <input id="paymentDate" type="date" required>
+
+                    <label>Método de pago</label>
+                    <select id="paymentMethod">
+                        <option>Efectivo</option>
+                        <option>Transferencia</option>
+                        <option>Tarjeta</option>
+                        <option>Otro</option>
+                    </select>
+
+                    <button class="btn btn-primary" type="submit">
+                        Registrar pago
+                    </button>
+
+                </form>
+
+            </div>
+
+            <div class="panel table-wrap">
+
+                <h3>Pagos registrados</h3>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Fecha</th>
+                            <th>Cliente</th>
+                            <th>Concepto</th>
+                            <th>Valor</th>
+                            <th>Método</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="paymentsTable"></tbody>
+                </table>
+
+                <p id="paymentsEmpty">No hay pagos registrados.</p>
+
+            </div>
+
+        </section>
+
+        <!-- CONCURSOS -->
+        <section id="view-contests" class="view">
+
+            <h1>Inscripción a concursos</h1>
+
+            <div class="panel">
+
+                <form id="contestForm">
+
+                    <label>Cliente</label>
+                    <select id="contestUser" required></select>
+
+                    <label>Nombre del concurso</label>
+                    <input id="contestName" required>
+
+                    <label>Fecha del evento</label>
+                    <input id="contestDate" type="date" required>
+
+                    <label>Categoría</label>
+                    <input id="contestCategory" required>
+
+                    <button class="btn btn-primary" type="submit">
+                        Registrar inscripción
+                    </button>
+
+                </form>
+
+            </div>
+
+            <div class="panel">
+                <h3>Inscripciones registradas</h3>
+                <div id="contestsList"></div>
+                <p id="contestsEmpty">No hay inscripciones registradas.</p>
+            </div>
+
+        </section>
+
+        <!-- AJUSTES -->
+        <section id="view-settings" class="view">
+
+            <h1>Ajustes de GYMCONTROL</h1>
+
+            <div class="panel">
+
+                <h3>Información de la aplicación</h3>
+
+                <p>Nombre: GYMCONTROL</p>
+
+                <p>Usuario activo:
+                    <strong id="settingsUser"></strong>
+                </p>
+
+                <p>Almacenamiento: navegador local.</p>
+
+                <hr>
+
+                <h3>Restaurar información</h3>
+
+                <p>Esta opción elimina los registros guardados y restaura los datos iniciales.</p>
+
+                <button id="resetDataBtn" class="btn btn-danger">
+                    Restaurar datos de demostración
+                </button>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>

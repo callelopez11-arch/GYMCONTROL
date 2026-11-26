@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GYMCONTROL - Inicio de sesión</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="login-page">
+
+    <main class="login-card">
+
+        <h1>GYMCONTROL</h1>
+        <h2>BIENVENIDO</h2>
+
+        <p>Administra tu gimnasio en un solo lugar</p>
+
+        <form id="loginForm">
+
+            <input
+                type="text"
+                id="usuario"
+                placeholder="Usuario"
+                required
+            >
+
+            <input
+                type="password"
+                id="password"
+                placeholder="Contraseña"
+                required
+            >
+
+            <button type="submit" class="btn-primary">
+                Entrar
+            </button>
+
+            <p id="loginError"></p>
+
+        </form>
+
+        <p>Al continuar, acepta nuestros términos.</p>
+
+        <small>Acceso de demostración: steven / 112233</small>
+
+    </main>
+
+    <script src="script.js"></script>
+
+</body>
+</html>

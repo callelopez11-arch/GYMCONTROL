@@ -1,0 +1,439 @@
+/* =================================
+   GYMCONTROL - DISEÑO GENERAL
+================================= */
+
+* {
+    box-sizing: border-box;
+}
+
+:root {
+    --verde: #65bd12;
+    --verde-oscuro: #20311d;
+    --fondo: #f3f6f2;
+    --blanco: #ffffff;
+    --texto: #202820;
+    --gris: #68736b;
+    --borde: #e4e9e3;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: var(--fondo);
+    color: var(--texto);
+}
+
+button,
+input,
+select,
+textarea {
+    font-family: inherit;
+}
+
+/* =================================
+   INICIO DE SESIÓN
+================================= */
+
+.login-page {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background: linear-gradient(135deg, #e7ece4, #d6d2d1);
+}
+
+.login-card {
+    width: 100%;
+    max-width: 420px;
+    background: white;
+    padding: 40px;
+    border-radius: 18px;
+    text-align: center;
+    box-shadow: 0 12px 35px rgba(0,0,0,0.12);
+}
+
+.login-card h1 {
+    font-size: 30px;
+    margin-bottom: 10px;
+    color: var(--verde-oscuro);
+}
+
+.login-card h2 {
+    margin-bottom: 8px;
+}
+
+.login-card form {
+    text-align: left;
+    margin-top: 25px;
+}
+
+.login-card input {
+    width: 100%;
+    padding: 13px;
+    margin: 8px 0 18px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+}
+
+.login-card button {
+    width: 100%;
+    padding: 13px;
+}
+
+.login-card small {
+    display: block;
+    margin-top: 15px;
+    color: var(--gris);
+}
+
+#loginError {
+    color: #c0392b;
+    font-size: 13px;
+}
+
+/* =================================
+   BOTONES
+================================= */
+
+button {
+    cursor: pointer;
+    border: none;
+    border-radius: 8px;
+    transition: 0.2s;
+}
+
+button:hover {
+    opacity: 0.88;
+    transform: translateY(-1px);
+}
+
+.btn-primary {
+    background: var(--verde);
+    color: #14200b;
+    padding: 12px 18px;
+    font-weight: bold;
+}
+
+.btn-danger {
+    background: #bd3737;
+    color: white;
+    padding: 12px 18px;
+}
+
+.action-btn {
+    background: #eaf4e2;
+    color: #315c16;
+    padding: 7px 10px;
+    margin: 3px;
+}
+
+.delete-btn {
+    background: #fde8e8;
+    color: #a22e2e;
+}
+
+/* =================================
+   BARRA SUPERIOR
+================================= */
+
+.topbar {
+    background: #172316;
+    color: white;
+    min-height: 70px;
+    padding: 15px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.topbar h2 {
+    margin: 0;
+}
+
+.topbar button {
+    padding: 9px 13px;
+    background: transparent;
+    border: 1px solid white;
+    color: white;
+    margin-left: 12px;
+}
+
+/* =================================
+   ESTRUCTURA PRINCIPAL
+================================= */
+
+.app-layout {
+    display: grid;
+    grid-template-columns: 245px 1fr;
+    min-height: calc(100vh - 70px);
+}
+
+/* =================================
+   MENÚ LATERAL
+================================= */
+
+.sidebar {
+    background: var(--verde-oscuro);
+    padding: 25px 15px;
+    color: white;
+}
+
+.sidebar h3 {
+    font-size: 12px;
+    margin: 5px 10px 20px;
+    color: #b9cbb2;
+}
+
+.nav-link {
+    width: 100%;
+    display: block;
+    text-align: left;
+    background: transparent;
+    color: white;
+    padding: 14px;
+    margin: 5px 0;
+    font-size: 14px;
+    border-radius: 8px;
+}
+
+.nav-link:hover,
+.nav-link.active {
+    background: var(--verde);
+    color: #14200b;
+}
+
+/* =================================
+   CONTENIDO
+================================= */
+
+.main-content {
+    padding: 35px;
+    width: 100%;
+    max-width: 1500px;
+}
+
+.main-content h1 {
+    margin-top: 0;
+    font-size: 28px;
+}
+
+.main-content p {
+    color: var(--gris);
+}
+
+/* =================================
+   VISUALIZACIÓN DE MÓDULOS
+================================= */
+
+.view {
+    display: none;
+}
+
+.view.active {
+    display: block;
+}
+
+/* =================================
+   TARJETAS DE INDICADORES
+================================= */
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+    margin: 25px 0;
+}
+
+.stat-card {
+    background: white;
+    padding: 23px;
+    border-radius: 12px;
+    border: 1px solid var(--borde);
+    box-shadow: 0 3px 12px rgba(0,0,0,0.04);
+}
+
+.stat-card h3 {
+    color: var(--gris);
+    font-size: 14px;
+}
+
+.stat-card strong {
+    display: block;
+    font-size: 32px;
+    color: var(--verde-oscuro);
+    margin-top: 12px;
+}
+
+/* =================================
+   PANELES
+================================= */
+
+.panel {
+    background: white;
+    padding: 25px;
+    margin: 20px 0;
+    border-radius: 12px;
+    border: 1px solid var(--borde);
+    box-shadow: 0 3px 12px rgba(0,0,0,0.04);
+}
+
+/* =================================
+   FORMULARIOS
+================================= */
+
+form label {
+    display: block;
+    font-weight: bold;
+    font-size: 13px;
+    margin: 15px 0 7px;
+}
+
+form input,
+form select,
+form textarea,
+#userSearch,
+#routineSearch {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #cfd8cf;
+    border-radius: 8px;
+    margin-bottom: 12px;
+    background: white;
+}
+
+form input:focus,
+form select:focus,
+form textarea:focus {
+    outline: 2px solid #65bd1250;
+    border-color: var(--verde);
+}
+
+form button {
+    margin-top: 12px;
+}
+
+/* =================================
+   TABLAS
+================================= */
+
+.table-wrap {
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 600px;
+}
+
+th {
+    background: #edf4e8;
+    color: #315c16;
+    padding: 14px;
+    text-align: left;
+    font-size: 13px;
+}
+
+td {
+    padding: 13px;
+    border-bottom: 1px solid var(--borde);
+    font-size: 13px;
+}
+
+tr:hover {
+    background: #f8fbf6;
+}
+
+/* =================================
+   HISTORIALES Y REGISTROS
+================================= */
+
+.record-card {
+    background: #f8faf7;
+    border: 1px solid var(--borde);
+    padding: 18px;
+    border-radius: 10px;
+    margin-bottom: 12px;
+}
+
+.record-card h3 {
+    margin-top: 0;
+    color: var(--verde-oscuro);
+}
+
+.record-card p {
+    font-size: 13px;
+}
+
+/* =================================
+   NOTIFICACIONES
+================================= */
+
+.notice {
+    display: none;
+    background: #e5f5df;
+    color: #36751b;
+    padding: 14px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+}
+
+.notice.visible {
+    display: block;
+}
+
+/* =================================
+   AJUSTES
+================================= */
+
+hr {
+    border: none;
+    border-top: 1px solid var(--borde);
+    margin: 25px 0;
+}
+
+/* =================================
+   DISEÑO RESPONSIVE
+================================= */
+
+@media (max-width: 950px) {
+
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .app-layout {
+        grid-template-columns: 200px 1fr;
+    }
+
+}
+
+@media (max-width: 650px) {
+
+    .app-layout {
+        display: block;
+    }
+
+    .sidebar {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .sidebar h3 {
+        grid-column: 1 / -1;
+    }
+
+    .main-content {
+        padding: 20px;
+    }
+
+    .stats-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .topbar {
+        padding: 15px;
+    }
+
+}
